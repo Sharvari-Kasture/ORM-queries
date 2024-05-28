@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Edit Book
+    {% else %}
+        New Book
+    {% endif %}
+{% endblock %}
+
+{% block jumbotron_title %}
+    {% if form.instance.pk %}
+        Edit Book
+    {% else %}
+        New Book
+    {% endif %}
+{% endblock %}
+
+{% block jumbotron_text %}
+    Use the form below to
+    {% if form.instance.pk %}
+        edit the details of the book
+    {% else %}
+        add a new book
+    {% endif %}.
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="jumbotron" style="background-color: #50a4b9;">
+            <h1 style="color: #68757b; padding-left: 350px;">
+                {% if form.instance.pk %}
+                    Edit Book
+                {% else %}
+                    New Book
+                {% endif %}
+            </h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+
+                <input type="submit" value="Submit" class="btn btn-success btn-lg">
+                <a class="btn btn-secondary" href="{% url 'book_list' %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

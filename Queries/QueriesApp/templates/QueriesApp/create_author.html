@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create Author - My Website{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+    <div class="jumbotron" style="background-color: #50a4b9;">
+        <h2 style="color: #68757b; padding-left: 350px;">Create Author</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Submit" class="btn btn-success btn-lg">
+    </form>
+{% endblock %}

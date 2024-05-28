@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Raw SQL Query Results{% endblock %}
+
+{% block jumbotron_title %}Raw SQL Query Results{% endblock %}
+{% block content %}
+    <h1>Raw SQL Query Results</h1>
+    <ul>
+        {% for row in rows %}
+            <li>{{ row }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'book_list' %}">Back to Book List</a>
+{% endblock %}
